@@ -68,7 +68,9 @@ function getVisibleItemsByCustomer(rootObject) {
   
         
         for (const itemName of category.items) {
-          visibleItems.add(itemName);
+          if(category.visibleTo[customerId]) {
+            visibleItems.add(itemName);
+          }
         }
   
        
@@ -76,7 +78,9 @@ function getVisibleItemsByCustomer(rootObject) {
           const subcategory = rootObject.categories[subcategoryName];
   
           for (const itemName of subcategory.items) {
-            visibleItems.add(itemName);
+            if (subcategory.visibleTo[customerId]) {
+              visibleItems.add(itemName);
+            }
           }
         }
       }
